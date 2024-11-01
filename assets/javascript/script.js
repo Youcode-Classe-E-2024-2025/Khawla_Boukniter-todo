@@ -11,6 +11,8 @@ function createTask() {
   }
 }
 
+let editedTask = null;
+
 function saveTask() {
   const title = document.getElementById("title").value.trim();
   const priority = document.getElementById("priority").value;
