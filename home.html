@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>ToDo Home Page</title>
+  </head>
+  <body>
+    <div class="body">
+      <div class="container">
+        <div class="header">
+          <h1>Let's kick off the day</h1>
+          <div class="add-btn">
+            <button id="new-task"><i class="fa-solid fa-plus"></i>Add</button>
+          </div>
+        </div>
+        <div class="filter-sort">
+          <select id="priority-filter">
+            <option value="">All Priorities</option>
+            <option value="high">P1 - High</option>
+            <option value="medium">P2 - Medium</option>
+            <option value="low">P3 - Low</option>
+          </select>
+          <select id="sort-order">
+            <option value="">Sort by</option>
+            <option value="date-asc">Date Ascending</option>
+            <option value="date-desc">Date Descending</option>
+          </select>
+        </div>
+        <div class="boards">
+          <div class="block" id="todo">
+            <div class="status">
+              <i class="fa-regular fa-circle-pause"></i>
+              <strong>To Do</strong>
+              <span class="task-count">0</span>
+            </div>
+            <div class="tasks"></div>
+          </div>
+          <div class="block" id="inprogress">
+            <div class="status">
+              <strong>In Progress</strong>
+              <span class="task-count">0</span>
+            </div>
+            <div class="tasks"></div>
+          </div>
+          <div class="block" id="done">
+            <div class="status">
+              <i class="fa-solid fa-circle-check"></i>
+              <strong>Done</strong>
+              <span class="task-count">0</span>
+            </div>
+            <div class="tasks"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
