@@ -84,3 +84,13 @@ function saveTask() {
     resetForm();
   }
 }
+
+function getPriorityColor(priority) {
+  if (priority === "high") {
+    return "5px solid red";
+  } else if (priority === "medium") {
+    return "5px solid orange";
+  } else {
+    return "5px solid green";
+  }
+}
