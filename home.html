@@ -60,6 +60,53 @@
           </div>
         </div>
       </div>
+      <div class="new-block" id="new">
+        <strong>New Task</strong>
+        <form class="form-block">
+          <span class="form">
+            <label class="label" for="title">Title</label>
+            <input class="input" type="text" name="title" id="title" required />
+          </span>
+          <span class="form">
+            <label class="label" for="date">Date</label>
+            <input class="input" type="date" name="date" id="date" required />
+          </span>
+          <span class="form">
+            <label class="label" for="description">Description</label>
+            <textarea
+              class="input"
+              name="description"
+              value="description"
+              id="description"
+              placeholder="Enter task description..."
+              cols="70"
+              rows="5"
+            ></textarea>
+          </span>
+          <span class="form">
+            <label class="label" for="priority">Priority</label>
+            <select class="input" name="priority" id="priority">
+              <option value="">Choose Priority</option>
+              <option value="high">P1 - High</option>
+              <option value="medium">P2 - Medium</option>
+              <option value="low">P3 - Low</option>
+            </select>
+          </span>
+          <span class="form">
+            <label class="label" for="status">Status</label>
+            <select class="input" name="status" id="status">
+              <option value="">Choose Status</option>
+              <option value="todo">To Do</option>
+              <option value="inprogress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+          </span>
+          <span class="form-btns">
+            <button id="save-btn">Save</button>
+            <button id="cancel-btn">Cancel</button>
+          </span>
+        </form>
+      </div>
     </div>
   </body>
 </html>
