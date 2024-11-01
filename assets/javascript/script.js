@@ -157,3 +157,31 @@ function filterTasks() {
     }
   });
 }
+
+function sortTasks() {
+  const sortOrder = document.getElementById("sort-order").value;
+  const containers = document.querySelectorAll(".block .tasks");
+
+  containers.forEach((container) => {
+    const taskArray = Array.from(container.children);
+
+    if (sortOrder === "date-asc") {
+      taskArray.sort((a, b) => {
+        return (
+          new Date(a.querySelector("small").innerText) -
+          new Date(b.querySelector("small").innerText)
+        );
+      });
+    } else if (sortOrder === "date-desc") {
+      taskArray.sort((a, b) => {
+        return (
+          new Date(b.querySelector("small").innerText) -
+          new Date(a.querySelector("small").innerText)
+        );
+      });
+    }
+
+    container.innerHTML = "";
+    taskArray.forEach((task) => container.appendChild(task));
+  });
+}
