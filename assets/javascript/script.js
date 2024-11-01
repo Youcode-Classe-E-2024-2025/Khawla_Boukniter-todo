@@ -138,3 +138,22 @@ function deleteTask(element) {
     count.innerText = parseInt(count.innerText) - 1;
   }
 }
+
+function filterTasks() {
+  const filter = document.getElementById("priority-filter").value;
+  const tasks = document.querySelectorAll(".task");
+
+  tasks.forEach((task) => {
+    const taskPriority = task.style.borderLeft.includes("red")
+      ? "high"
+      : task.style.borderLeft.includes("orange")
+      ? "medium"
+      : "low";
+
+    if (filter === "" || taskPriority === filter) {
+      task.style.display = "block"; // Affiche la tâche
+    } else {
+      task.style.display = "none"; // Cache la tâche
+    }
+  });
+}
