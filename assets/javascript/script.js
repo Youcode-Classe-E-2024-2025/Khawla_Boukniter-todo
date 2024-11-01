@@ -104,3 +104,23 @@ function resetForm() {
   document.getElementById("new").style.display = "none";
   document.querySelector(".container").classList.remove("blur");
 }
+
+function editTask(element) {
+  editedTask = element.closest(".task");
+  const title = editedTask.querySelector("span").innerText;
+  const date = editedTask.querySelector("small").innerText;
+  const description = editedTask.querySelector(".description").innerText;
+  // const priority = Object.keys(tasks.find((t) => t.title === title))[0];
+
+  document.getElementById("title").value = title;
+  document.getElementById("date").value = date;
+  document.getElementById("description").value = description;
+  document.getElementById("priority").value =
+    editedTask.style.borderLeft.includes("red")
+      ? "high"
+      : editedTask.style.borderLeft.includes("orange")
+      ? "medium"
+      : "low";
+  document.getElementById("status").value = editedTask.closest(".block").id;
+  createTask();
+}
