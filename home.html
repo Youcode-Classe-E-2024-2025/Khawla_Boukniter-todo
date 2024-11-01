@@ -25,7 +25,9 @@
         <div class="header">
           <h1>Let's kick off the day</h1>
           <div class="add-btn">
-            <button id="new-task"><i class="fa-solid fa-plus"></i>Add</button>
+            <button id="new-task" onclick="createTask()">
+              <i class="fa-solid fa-plus"></i>Add
+            </button>
           </div>
         </div>
         <div class="filter-sort">
@@ -109,8 +111,8 @@
             </select>
           </span>
           <span class="form-btns">
-            <button id="save-btn">Save</button>
-            <button id="cancel-btn">Cancel</button>
+            <button id="save-btn" onclick="saveTask()">Save</button>
+            <button id="cancel-btn" onclick="createTask()">Cancel</button>
           </span>
         </form>
       </div>
