@@ -94,3 +94,13 @@ function getPriorityColor(priority) {
     return "5px solid green";
   }
 }
+
+function resetForm() {
+  document.getElementById("title").value = "";
+  document.getElementById("date").value = "";
+  document.getElementById("description").value = "description";
+  document.getElementById("priority").value = ""; // Réinitialiser la priorité par défaut
+  document.getElementById("status").value = ""; // Réinitialiser le statut par défaut
+  document.getElementById("new").style.display = "none";
+  document.querySelector(".container").classList.remove("blur");
+}
