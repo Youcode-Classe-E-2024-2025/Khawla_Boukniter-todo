@@ -2,7 +2,19 @@
 module.exports = {
   content: ["./home.html", "./assets/javascript/*.js"],
   theme: {
-    extend: {},
+    extend: {
+      filter: {
+        blur: "blur(2px)",
+      },
+      animation: {
+        "fade-out": "fadeOut 0.5s forwards",
+      },
+    },
   },
-  plugins: [],
+  variants: {
+    extend: {
+      filter: ["responsive", "hover", "focus"],
+    },
+  },
+  plugins: [require("tailwindcss-filters")],
 };

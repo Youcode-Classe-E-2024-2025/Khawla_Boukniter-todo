@@ -17,12 +17,13 @@
       rel="stylesheet"
     />
     <link href="./assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/autres.css" />
     <title>ToDo Home Page</title>
   </head>
   <body class="bg-[#f5f5f7] m-8 mt-12">
     <div class="body relative z-[1] flex">
       <div class="container w-[70%] min-w-[50%] m-auto flex flex-col">
-        <div class="header mb-8 flex justify-between">
+        <div class="header mb-8 flex justify-between items-center">
           <h1 class="text-[2.50rem] leading-none my-4 mx-0">
             Let's kick off the day
           </h1>
@@ -39,7 +40,7 @@
         <div class="filter-sort flex justify-end gap-8 my-4">
           <select
             id="priority-filter"
-            class="p-2 border border-black border-opacity-40 rounded"
+            class="p-1 border border-black border-opacity-40 rounded"
             onchange="filterTasks()"
           >
             <option value="">All Priorities</option>
@@ -49,7 +50,7 @@
           </select>
           <select
             id="sort-order"
-            class="p-2 border border-black border-opacity-40 rounded"
+            class="p-1 border border-black border-opacity-40 rounded"
             onchange="sortTasks()"
           >
             <option value="">Sort by</option>
@@ -63,7 +64,7 @@
             id="todo"
           >
             <div
-              class="status bg-[#f2e9e4] rounded-2xl flex gap-2 items-center w-2/4 py-1 px-2"
+              class="status bg-[#f2e9e4] rounded-2xl flex gap-2 items-center w-[60%] py-1 px-2"
             >
               <i class="fa-regular fa-circle-pause cursor-pointer"></i>
               <strong>To Do</strong>
@@ -76,7 +77,7 @@
             id="inprogress"
           >
             <div
-              class="status bg-[#f2e9e4] rounded-2xl flex gap-2 items-center w-2/4 py-1 px-2"
+              class="status bg-[#f2e9e4] rounded-2xl flex gap-2 items-center w-[60%] py-1 px-2"
             >
               <strong>In Progress</strong>
               <span class="task-count">0</span>
@@ -88,7 +89,7 @@
             id="done"
           >
             <div
-              class="status bg-[#f2e9e4] rounded-2xl flex gap-2 items-center w-2/4 py-1 px-2"
+              class="status bg-[#f2e9e4] rounded-2xl flex gap-2 items-center w-[60%] py-1 px-2"
             >
               <i class="fa-solid fa-circle-check cursor-pointer"></i>
               <strong>Done</strong>
@@ -172,7 +173,7 @@
             </button>
             <button
               id="cancel-btn"
-              class="py-1.5 px-3 rounded-lg cursor-pointer bg-darkgrey text-white"
+              class="py-1.5 px-3 rounded-lg cursor-pointer bg-gray-400 text-white"
               onclick="createTask()"
             >
               Cancel

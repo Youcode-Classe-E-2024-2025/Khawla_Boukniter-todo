@@ -1,0 +1,71 @@
+h1 {
+  font-family: "Itim", "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.boards {
+  font-family: "Nunito", sans-serif;
+}
+
+.task {
+  background-color: white;
+  margin: 0.2rem 0 0.3rem 0;
+  padding: 0.5rem 0.2rem 0.5rem 2rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.4);
+  border-radius: 0.3rem;
+  transition: all 0.3s ease-in-out;
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.new-block {
+  display: none;
+  gap: 0.5rem;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  background-color: white;
+  box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.4);
+  border: 0.1rem solid rgba(0, 0, 0, 0.4);
+  width: 60%;
+  z-index: 2;
+  font-family: "Nunito", sans-serif;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.blur {
+  filter: blur(2px);
+}
+/* .task {
+    transition: all 0.3s ease-in-out;
+    transform: scale(0.9);
+    opacity: 0;
+  }  */
+.task.show {
+  transform: scale(1);
+  opacity: 1;
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+.task span {
+  display: inline-block;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

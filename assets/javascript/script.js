@@ -28,6 +28,10 @@ function saveTask() {
     alert("Please enter a date for the task");
     return;
   }
+  if (!status) {
+    alert("Please select a status for the task");
+    return;
+  }
 
   const container = document.getElementById(status);
   const count = container.querySelector(".task-count");
@@ -72,12 +76,12 @@ function saveTask() {
       "display: flex; justify-content: space-between; align-items: center; transition: all 0.5s";
     newTask.id = title.toLowerCase().replace(/\s+/g, ""); // ID unique pour la tâche
     newTask.innerHTML = `
-                      <div><span>${title}</span> <br> <small>${date}</small></div> 
-                      <div><i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
-                      <i class="fa-solid fa-edit" onclick="editTask(this)"></i></div>
-                      <br> <small class="description" style="display: none">${description}</small>
-                  `;
-
+                    <div><span>${title}</span> <br> <small>${date}</small></div>
+                    <div><i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
+                    <i class="fa-solid fa-edit" onclick="editTask(this)"></i></div>
+                    <br> <small class="description" style="display: none">${description}</small>
+                `;
+    // Mise à jour de la couleur du bord selon la priorité
     newTask.style.borderLeft = getPriorityColor(priority);
 
     container.querySelector(".tasks").appendChild(newTask);
@@ -85,6 +89,8 @@ function saveTask() {
     count.innerText = parseInt(count.innerText) + 1;
     resetForm();
   }
+
+  //   tasks.push({ title, priority, status, date }); // Ajout à l'array des tâches
 }
 
 function getPriorityColor(priority) {
@@ -100,9 +106,9 @@ function getPriorityColor(priority) {
 function resetForm() {
   document.getElementById("title").value = "";
   document.getElementById("date").value = "";
-  document.getElementById("description").value = "description";
-  document.getElementById("priority").value = ""; // Réinitialiser la priorité par défaut
-  document.getElementById("status").value = ""; // Réinitialiser le statut par défaut
+  document.getElementById("description").value = "";
+  document.getElementById("priority").value = "";
+  document.getElementById("status").value = "";
   document.getElementById("new").style.display = "none";
   document.querySelector(".container").classList.remove("blur");
 }
@@ -112,7 +118,6 @@ function editTask(element) {
   const title = editedTask.querySelector("span").innerText;
   const date = editedTask.querySelector("small").innerText;
   const description = editedTask.querySelector(".description").innerText;
-  // const priority = Object.keys(tasks.find((t) => t.title === title))[0];
 
   document.getElementById("title").value = title;
   document.getElementById("date").value = date;
@@ -123,13 +128,14 @@ function editTask(element) {
       : editedTask.style.borderLeft.includes("orange")
       ? "medium"
       : "low";
-  document.getElementById("status").value = editedTask.closest(".block").id;
+  document.getElementById("status").value =
+    editedTask.closest(".task-block").id;
   createTask();
 }
 
 function deleteTask(element) {
   const task = element.closest(".task");
-  const container = task.closest(".block");
+  const container = task.closest(".task-block");
   const count = container.querySelector(".task-count");
 
   if (confirm("Are you sure you want to delete this task?")) {
