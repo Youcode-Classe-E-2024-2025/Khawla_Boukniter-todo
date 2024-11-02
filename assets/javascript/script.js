@@ -129,13 +129,15 @@ function editTask(element) {
 
 function deleteTask(element) {
   const task = element.closest(".task");
-  const container = task.closest(".task-block");
+  const container = task.closest(".block");
   const count = container.querySelector(".task-count");
 
-  console.error("Are you sure you want to delete this task?");
   if (confirm("Are you sure you want to delete this task?")) {
-    task.remove();
-    count.innerText = parseInt(count.innerText) - 1;
+    task.classList.add("fade-out");
+    setTimeout(() => {
+      task.remove();
+      count.innerText = parseInt(count.innerText) - 1;
+    }, 500);
   }
 }
 
