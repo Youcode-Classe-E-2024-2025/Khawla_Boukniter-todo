@@ -43,11 +43,11 @@ function saveTask() {
 
     const oldStatus = editedTask.closest(".task-block").id;
     if (oldStatus !== status) {
+      editedTask.remove();
       const oldContainer = document.getElementById(oldStatus);
       const oldCount = oldContainer.querySelector(".task-count");
       oldCount.innerText = `${parseInt(oldCount.innerText) - 1}`;
 
-      editedTask.remove();
       resetForm();
 
       const newContainer = document.getElementById(status);
@@ -77,8 +77,8 @@ function saveTask() {
     newTask.id = title.toLowerCase().replace(/\s+/g, ""); // ID unique pour la tâche
     newTask.innerHTML = `
                     <div><span>${title}</span> <br> <small>${date}</small></div>
-                    <div><i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
-                    <i class="fa-solid fa-edit" onclick="editTask(this)"></i></div>
+                    <div><i class="fa-solid fa-trash cursor-pointer mr-2" onclick="deleteTask(this)"></i>
+                    <i class="fa-solid fa-edit cursor-pointer" onclick="editTask(this)"></i></div>
                     <br> <small class="description" style="display: none">${description}</small>
                 `;
     // Mise à jour de la couleur du bord selon la priorité
@@ -112,6 +112,13 @@ function resetForm() {
   document.getElementById("new").style.display = "none";
   document.querySelector(".container").classList.remove("blur");
 }
+
+const cancel = document.getElementById("cancel-btn");
+
+cancel.addEventListener("click", (event) => {
+  event.preventDefault();
+  resetForm();
+});
 
 function editTask(element) {
   editedTask = element.closest(".task");
