@@ -37,7 +37,7 @@ function saveTask() {
     editedTask.querySelector("small").innerText = date;
     editedTask.style.borderLeft = getPriorityColor(priority);
 
-    const oldStatus = editedTask.closest(".block").id;
+    const oldStatus = editedTask.closest(".task-block").id;
     if (oldStatus !== status) {
       const oldContainer = document.getElementById(oldStatus);
       const oldCount = oldContainer.querySelector(".task-count");
@@ -129,7 +129,7 @@ function editTask(element) {
 
 function deleteTask(element) {
   const task = element.closest(".task");
-  const container = task.closest(".block");
+  const container = task.closest(".task-block");
   const count = container.querySelector(".task-count");
 
   console.error("Are you sure you want to delete this task?");
@@ -160,7 +160,7 @@ function filterTasks() {
 
 function sortTasks() {
   const sortOrder = document.getElementById("sort-order").value;
-  const containers = document.querySelectorAll(".block .tasks");
+  const containers = document.querySelectorAll(".task-block .tasks");
 
   containers.forEach((container) => {
     const taskArray = Array.from(container.children);
