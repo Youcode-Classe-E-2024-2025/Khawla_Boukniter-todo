@@ -20,176 +20,178 @@
     <link rel="stylesheet" href="assets/css/autres.css" />
     <title>ToDo Home Page</title>
   </head>
-  <body class="bg-[#f5f5f7] mt-12">
-    <main class="body relative z-[1] flex pb-12">
-      <div class="container w-[70%] min-w-[50%] m-auto flex flex-col">
-        <div class="header mb-8 flex justify-between items-center">
-          <h1 class="text-[2.50rem] leading-none my-4 mx-0">
-            Let's kick off the day
-          </h1>
-          <div class="add-btn flex items-end">
-            <button
-              id="new-task"
-              class="border border-black border-opacity-20 rounded-2xl p-2 px-2 cursor-pointer bg-white/[0] flex gap-1.5 items-center"
-              onclick="createTask()"
-            >
-              <i class="fa-solid fa-plus cursor-pointer"></i>Add
-            </button>
-          </div>
-        </div>
-        <div class="filter-sort flex justify-end gap-8 my-4">
-          <select
-            id="priority-filter"
-            class="p-1 border border-black border-opacity-40 rounded"
-            onchange="filterTasks()"
-          >
-            <option value="">All Priorities</option>
-            <option value="high">P1 - High</option>
-            <option value="medium">P2 - Medium</option>
-            <option value="low">P3 - Low</option>
-          </select>
-          <select
-            id="sort-order"
-            class="p-1 border border-black border-opacity-40 rounded"
-            onchange="sortTasks()"
-          >
-            <option value="">Sort by</option>
-            <option value="date-asc">Date Ascending</option>
-            <option value="date-desc">Date Descending</option>
-          </select>
-        </div>
-        <div class="boards flex flex-row justify-between gap-8">
-          <div
-            class="task-block bg-[#e3d5ca] p-2 w-96 min-w-[14.00rem] min-h-[4.50rem] rounded flex flex-col gap-2"
-            id="todo"
-          >
-            <div
-              class="status bg-[#f2e9e4] rounded-2xl flex gap-2 items-center w-[60%] py-1 px-2"
-            >
-              <i class="fa-regular fa-circle-pause cursor-pointer"></i>
-              <strong>To Do</strong>
-              <span class="task-count">0</span>
+  <body class="bg-[#f5f5f7]">
+    <div class="wrapper">
+      <main class="body relative z-[1] flex flex-1">
+        <div
+          class="container w-[70%] min-w-[50%] m-auto mt-[4rem] flex flex-col"
+        >
+          <div class="header mb-2 flex justify-between items-center">
+            <h1 class="text-[2.50rem] leading-none my-4 mx-0">
+              Let's kick off the day
+            </h1>
+            <div class="add-btn flex items-end">
+              <button
+                id="new-task"
+                class="border border-black border-opacity-20 rounded-2xl p-2 px-2 cursor-pointer bg-white/[0] flex gap-1.5 items-center"
+                onclick="createTask()"
+              >
+                <i class="fa-solid fa-plus cursor-pointer"></i>Add
+              </button>
             </div>
-            <div class="tasks"></div>
           </div>
-          <div
-            class="task-block bg-[#d6ccc2] p-2 w-96 min-w-[14.00rem] min-h-[4.50rem] rounded flex flex-col gap-2"
-            id="inprogress"
-          >
-            <div
-              class="status bg-[#f2e9e4] rounded-2xl flex gap-2 items-center w-[60%] py-1 px-2"
-            >
-              <strong>In Progress</strong>
-              <span class="task-count">0</span>
-            </div>
-            <div class="tasks"></div>
-          </div>
-          <div
-            class="task-block bg-[#e3d5ca] p-2 w-96 min-w-[14.00rem] min-h-[4.50rem] rounded flex flex-col gap-2"
-            id="done"
-          >
-            <div
-              class="status bg-[#f2e9e4] rounded-2xl flex gap-2 items-center w-[60%] py-1 px-2"
-            >
-              <i class="fa-solid fa-circle-check cursor-pointer"></i>
-              <strong>Done</strong>
-              <span class="task-count">0</span>
-            </div>
-            <div class="tasks"></div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="new-block hidden gap-2 flex-col p-4 rounded bg-white w-3/5 z-[2] fixed top-1/2 left-1/2"
-        id="new"
-      >
-        <strong>New Task</strong>
-        <form class="form-block flex flex-col gap-[0.60rem]">
-          <span class="form flex flex-col gap-[0.30rem]">
-            <label class="label" for="title">Title</label>
-            <input
-              class="input p-1.5 border border-black border-opacity-40 rounded"
-              type="text"
-              name="title"
-              id="title"
-              required
-            />
-          </span>
-          <span class="form flex flex-col gap-[0.30rem]">
-            <label class="label" for="date">Date</label>
-            <input
-              class="input p-1.5 border border-black border-opacity-40 rounded"
-              type="date"
-              name="date"
-              id="date"
-              required
-            />
-          </span>
-          <span class="form flex flex-col gap-[0.30rem]">
-            <label class="label" for="description">Description</label>
-            <textarea
-              class="input p-1.5 border border-black border-opacity-40 rounded"
-              name="description"
-              value="description"
-              id="description"
-              placeholder="Enter task description..."
-              cols="70"
-              rows="5"
-            ></textarea>
-          </span>
-          <span class="form flex flex-col gap-[0.30rem]">
-            <label class="label" for="priority">Priority</label>
+          <div class="filter-sort flex justify-end gap-8 my-4">
             <select
-              class="input p-1.5 border border-black border-opacity-40 rounded"
-              name="priority"
-              id="priority"
+              id="priority-filter"
+              class="p-1 border border-black border-opacity-40 rounded"
+              onchange="filterTasks()"
             >
-              <option value="">Choose Priority</option>
+              <option value="">All Priorities</option>
               <option value="high">P1 - High</option>
               <option value="medium">P2 - Medium</option>
               <option value="low">P3 - Low</option>
             </select>
-          </span>
-          <span class="form flex flex-col gap-[0.30rem]">
-            <label class="label" for="status">Status</label>
             <select
-              class="input p-1.5 border border-black border-opacity-40 rounded"
-              name="status"
-              id="status"
+              id="sort-order"
+              class="p-1 border border-black border-opacity-40 rounded"
+              onchange="sortTasks()"
             >
-              <option value="">Choose Status</option>
-              <option value="todo">To Do</option>
-              <option value="inprogress">In Progress</option>
-              <option value="done">Done</option>
+              <option value="">Sort by</option>
+              <option value="date-asc">Date Ascending</option>
+              <option value="date-desc">Date Descending</option>
             </select>
-          </span>
-          <span class="form-btns flex gap-2">
-            <button
-              id="save-btn"
-              class="py-1.5 px-3 rounded-lg cursor-pointer bg-black text-white"
-              onclick="saveTask()"
+          </div>
+          <div class="boards flex flex-row justify-between gap-8">
+            <div
+              class="task-block bg-[#e3d5ca] p-2 w-96 min-w-[14.00rem] min-h-[4.50rem] rounded flex flex-col gap-2"
+              id="todo"
             >
-              Save
-            </button>
-            <button
-              id="cancel-btn"
-              class="py-1.5 px-3 rounded-lg cursor-pointer bg-gray-400 text-white"
-              onclick="createTask()"
+              <div
+                class="status bg-[#f2e9e4] rounded-2xl flex gap-2 items-center w-[60%] py-1 px-2"
+              >
+                <i class="fa-regular fa-circle-pause cursor-pointer"></i>
+                <strong>To Do</strong>
+                <span class="task-count">0</span>
+              </div>
+              <div class="tasks"></div>
+            </div>
+            <div
+              class="task-block bg-[#d6ccc2] p-2 w-96 min-w-[14.00rem] min-h-[4.50rem] rounded flex flex-col gap-2"
+              id="inprogress"
             >
-              Cancel
-            </button>
-          </span>
-        </form>
-      </div>
-    </main>
-    <footer
-      class="bg-black text-red-100 text-center py-4 fixed bottom-0 left-0 w-[100%]"
-    >
-      <p class="text-sm">"Stay organized, stay inspired."</p>
-      <p class="text-xs mt-2">
-        &copy; 2024 Your Kanban App. Made with focus and determination.
-      </p>
-    </footer>
+              <div
+                class="status bg-[#f2e9e4] rounded-2xl flex gap-2 items-center w-[60%] py-1 px-2"
+              >
+                <strong>In Progress</strong>
+                <span class="task-count">0</span>
+              </div>
+              <div class="tasks"></div>
+            </div>
+            <div
+              class="task-block bg-[#e3d5ca] p-2 w-96 min-w-[14.00rem] min-h-[4.50rem] rounded flex flex-col gap-2"
+              id="done"
+            >
+              <div
+                class="status bg-[#f2e9e4] rounded-2xl flex gap-2 items-center w-[60%] py-1 px-2"
+              >
+                <i class="fa-solid fa-circle-check cursor-pointer"></i>
+                <strong>Done</strong>
+                <span class="task-count">0</span>
+              </div>
+              <div class="tasks"></div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="new-block hidden gap-2 flex-col p-4 rounded bg-white w-3/5 z-[2] fixed top-1/2 left-1/2"
+          id="new"
+        >
+          <strong>New Task</strong>
+          <form class="form-block flex flex-col gap-[0.60rem]">
+            <span class="form flex flex-col gap-[0.30rem]">
+              <label class="label" for="title">Title</label>
+              <input
+                class="input p-1.5 border border-black border-opacity-40 rounded"
+                type="text"
+                name="title"
+                id="title"
+                required
+              />
+            </span>
+            <span class="form flex flex-col gap-[0.30rem]">
+              <label class="label" for="date">Date</label>
+              <input
+                class="input p-1.5 border border-black border-opacity-40 rounded"
+                type="date"
+                name="date"
+                id="date"
+                required
+              />
+            </span>
+            <span class="form flex flex-col gap-[0.30rem]">
+              <label class="label" for="description">Description</label>
+              <textarea
+                class="input p-1.5 border border-black border-opacity-40 rounded"
+                name="description"
+                value="description"
+                id="description"
+                placeholder="Enter task description..."
+                cols="70"
+                rows="5"
+              ></textarea>
+            </span>
+            <span class="form flex flex-col gap-[0.30rem]">
+              <label class="label" for="priority">Priority</label>
+              <select
+                class="input p-1.5 border border-black border-opacity-40 rounded"
+                name="priority"
+                id="priority"
+              >
+                <option value="">Choose Priority</option>
+                <option value="high">P1 - High</option>
+                <option value="medium">P2 - Medium</option>
+                <option value="low">P3 - Low</option>
+              </select>
+            </span>
+            <span class="form flex flex-col gap-[0.30rem]">
+              <label class="label" for="status">Status</label>
+              <select
+                class="input p-1.5 border border-black border-opacity-40 rounded"
+                name="status"
+                id="status"
+              >
+                <option value="">Choose Status</option>
+                <option value="todo">To Do</option>
+                <option value="inprogress">In Progress</option>
+                <option value="done">Done</option>
+              </select>
+            </span>
+            <span class="form-btns flex gap-2">
+              <button
+                id="save-btn"
+                class="py-1.5 px-3 rounded-lg cursor-pointer bg-black text-white"
+                onclick="saveTask()"
+              >
+                Save
+              </button>
+              <button
+                id="cancel-btn"
+                class="py-1.5 px-3 rounded-lg cursor-pointer bg-gray-400 text-white"
+                onclick="createTask()"
+              >
+                Cancel
+              </button>
+            </span>
+          </form>
+        </div>
+      </main>
+      <footer class="bg-black text-red-100 text-center py-4">
+        <p class="text-sm">"Stay organized, stay inspired."</p>
+        <p class="text-xs mt-2">
+          &copy; 2024 Your Kanban App. Made with focus and determination.
+        </p>
+      </footer>
+    </div>
 
     <script src="assets/javascript/script.js"></script>
   </body>
